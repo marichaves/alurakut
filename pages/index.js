@@ -42,11 +42,11 @@ function ProfileRelationsBox(propriedades){
   )
 }
 
-export default function Home() {
+export default function Home(props) {
   const [comunidades, setComunidades] = React.useState([]);
   //const comunidades = comunidades [0];
   //const alteradorDeComunidades/serComunidades = comunidades [1];
-  const usuarioAleatorio = 'marichaves';
+  const usuarioAleatorio = props.githubUser;
   //const comunidades = ['Alurakut'];
   const pessoasFavoritas = [
 'peas',
@@ -206,4 +206,13 @@ console.log('seguidores antes do return', seguidores)
   </MainGrid>
   </>
   )
+}
+
+export async function getServerSideProps(context){
+ 
+  return {
+    props: {
+      githubUser: 'marichaves'
+    },
+  }
 }
